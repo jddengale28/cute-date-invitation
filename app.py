@@ -153,12 +153,20 @@ function goTo(n){
 }
 function selectedCafe(){return document.querySelector('input[name="cafe"]:checked')?.value||'';}
 function selectedFoods(){return [...document.querySelectorAll('#foods input:checked')].map(x=>x.value);}
+
 function planText(){
-  const cafe=selectedCafe()||'To be decided together';
-  const date=document.getElementById('date').value||'Whenever works for us';
-  const foods=selectedFoods();
-  const notes=document.getElementById('notes').value.trim();
-  return '💗 OUR LITTLE DATE PLAN 💗\\n\\n📍 Café: '+cafe+'\\n📅 Date: '+date+'\\n🍓 Food cravings: '+(foods.length?foods.join(', '):'Surprise me!')+(notes?'\\n📝 Notes: '+notes:'')+'\\n\\n🐘 Made with a little courage and lots of love.';
+  const cafe = selectedCafe() || 'To be decided together';
+  const date = document.getElementById('date').value || 'Whenever works for us';
+  const foods = selectedFoods();
+  const notes = document.getElementById('notes').value.trim();
+
+  return '💗 OUR LITTLE DATE PLAN 💗\n\n' +
+    '📍 Café: ' + cafe + '\n' +
+    '📅 Date: ' + date + '\n' +
+    '🍓 Food cravings: ' +
+    (foods.length ? foods.join(', ') : 'Surprise me!') +
+    (notes ? '\n📝 Notes: ' + notes : '') +
+    '\n\n🐘 Made with a little courage and lots of love.';
 }
 function makePlan(){
   if(!selectedCafe()){alert('Pick a café first, cutie 💗');return;}
